@@ -77,10 +77,6 @@ func (conn *connection) QueryRow(query string,
 	return
 }
 
-func (conn *connection) DB() *sql.DB {
-	return conn.write.DB
-}
-
 func (conn *connection) Close() error {
 	err := conn.read.Close()
 	if err != nil {
