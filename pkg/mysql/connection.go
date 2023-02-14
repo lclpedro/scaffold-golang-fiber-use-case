@@ -16,8 +16,6 @@ var (
 	ErrConnectionNotNil = errors.New("write connection could not be nil")
 )
 
-const product = "DATABASE"
-
 type Connection interface {
 	Select(dest interface{}, query string, args ...interface{}) error
 	Exec(query string, args ...interface{}) (sql.Result, error)

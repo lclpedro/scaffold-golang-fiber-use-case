@@ -9,6 +9,9 @@ type healthRepository struct {
 }
 
 func (h *healthRepository) GetDatabaseCheck() error {
-	_, err := h.dbConnection.Exec("SELECT 1;")
-	return err
+	query := h.dbConnection.QueryRow("SELECT 1;")
+	if err := query.Err(); err != nil {
+		return err
+	}
+	return nil
 }

@@ -2,11 +2,10 @@ package uow
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
-
-	"errors"
 )
 
 type RepositoryFactory func(tx *sqlx.Tx) interface{}
