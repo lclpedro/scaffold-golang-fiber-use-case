@@ -3,7 +3,7 @@ package customer
 import (
 	"context"
 
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unity_of_work"
+	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
 )
 
 type Service interface {
@@ -11,10 +11,10 @@ type Service interface {
 }
 
 type customerService struct {
-	uow uow.UnityOfWorkInterface
+	uow uow.UnitOfWorkInterface
 }
 
-func NewCustomerService(uow uow.UnityOfWorkInterface) Service {
+func NewCustomerService(uow uow.UnitOfWorkInterface) Service {
 	return &customerService{
 		uow: uow,
 	}

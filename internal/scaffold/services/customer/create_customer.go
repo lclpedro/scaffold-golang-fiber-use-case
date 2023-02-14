@@ -7,7 +7,7 @@ import (
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/domains"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/address"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/person"
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unity_of_work"
+	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
 )
 
 type InputNewCustomer struct {
@@ -51,7 +51,7 @@ func (s *customerService) getPersonRepository(ctx context.Context) (person.Repos
 }
 
 func (s *customerService) CreateCustomer(ctx context.Context, input InputNewCustomer) error {
-	return s.uow.Do(ctx, func(uow *uow.UnityOfWork) error {
+	return s.uow.Do(ctx, func(uow *uow.UnitOfWork) error {
 		addressRepo, err := s.getAddressRepository(ctx)
 		if err != nil {
 			return nil
@@ -66,7 +66,7 @@ func (s *customerService) CreateCustomer(ctx context.Context, input InputNewCust
 		if err != nil {
 			return err
 		}
-		personDomain.AddressID = addressID + 1
+		personDomain.AddressID = addressID
 		personID, err := personRepo.Save(personDomain)
 		if err != nil {
 			return err
