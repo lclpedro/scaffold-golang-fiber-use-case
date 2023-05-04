@@ -16,7 +16,7 @@ type Repository interface {
 }
 
 type personRepository struct {
-	dbConnection mysql.Connection``
+	dbConnection mysql.Connection ``
 }
 
 func NewPersonRepository(dbConnection mysql.Connection) Repository {
@@ -25,7 +25,7 @@ func NewPersonRepository(dbConnection mysql.Connection) Repository {
 	}
 }
 
-const insertPerson = `INSERT INTO persons(first_name, last_name, age, address_id) VALUES (?,?,?,?)`
+const insertPerson = `INSERT INTO person(first_name, last_name, age, address_id) VALUES (?,?,?,?)`
 
 func (r *personRepository) Save(person *domains.Person) (int64, error) {
 	query, err := r.dbConnection.Exec(insertPerson,
