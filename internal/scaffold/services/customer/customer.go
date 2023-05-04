@@ -3,7 +3,7 @@ package customer
 import (
 	"context"
 
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
+	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
 )
 
 type Service interface {
@@ -11,10 +11,10 @@ type Service interface {
 }
 
 type customerService struct {
-	uow uow.UnitOfWorkInterface
+	uow mysql.UnitOfWorkInterface
 }
 
-func NewCustomerService(uow uow.UnitOfWorkInterface) Service {
+func NewCustomerService(uow mysql.UnitOfWorkInterface) Service {
 	return &customerService{
 		uow: uow,
 	}

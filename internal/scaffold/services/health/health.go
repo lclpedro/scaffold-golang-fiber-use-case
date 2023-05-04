@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/health"
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
+	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
 )
 
 type Service interface {
@@ -12,10 +12,10 @@ type Service interface {
 }
 
 type healthService struct {
-	uow uow.UnitOfWorkInterface
+	uow mysql.UnitOfWorkInterface
 }
 
-func NewHealthService(uow uow.UnitOfWorkInterface) Service {
+func NewHealthService(uow mysql.UnitOfWorkInterface) Service {
 	return &healthService{
 		uow: uow,
 	}
@@ -30,7 +30,7 @@ func (h *healthService) getHealthRepository(ctx context.Context) (health.Reposit
 }
 
 func (h *healthService) Ping(ctx context.Context) error {
-	return h.uow.Do(ctx, func(uow *uow.UnitOfWork) error {
+	return h.uow.Do(ctx, func(uow *mysql.UnitOfWork) error {
 		repo, err := h.getHealthRepository(ctx)
 
 		if err != nil {

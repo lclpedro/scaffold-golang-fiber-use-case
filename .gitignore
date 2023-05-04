@@ -238,6 +238,8 @@ Temporary Items
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
+cmd/__debug_bin
+
 # Local History for Visual Studio Code
 .history/
 

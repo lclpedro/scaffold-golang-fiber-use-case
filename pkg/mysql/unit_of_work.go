@@ -1,4 +1,4 @@
-package uow
+package mysql
 
 import (
 	"context"
@@ -7,7 +7,6 @@ import (
 	"fmt"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
 )
 
 type RepositoryFactory func(tx *sql.Tx) interface{}
@@ -22,7 +21,7 @@ type UnitOfWorkInterface interface {
 
 type UnitOfWork struct {
 	DbConnection *sqlx.DB
-	DbFactory    mysql.Connection
+	DbFactory    Connection
 	Tx           *sql.Tx
 	Repositories map[string]RepositoryFactory
 }
@@ -34,7 +33,7 @@ const (
 	ErrorExecCommit   = "UnitOfWork: Error in execute commit transaction. Original Error: %s Commit Error: %s"
 )
 
-func NewUnitOfWork(db mysql.Connection) *UnitOfWork {
+func NewUnitOfWork(db Connection) *UnitOfWork {
 	return &UnitOfWork{
 		DbConnection: db.GetDB(),
 		DbFactory:    db,
