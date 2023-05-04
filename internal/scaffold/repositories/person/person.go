@@ -16,7 +16,7 @@ type Repository interface {
 }
 
 type personRepository struct {
-	dbConnection mysql.Connection ``
+	dbConnection mysql.Connection
 }
 
 func NewPersonRepository(dbConnection mysql.Connection) Repository {
