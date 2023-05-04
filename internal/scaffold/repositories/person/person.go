@@ -2,6 +2,7 @@ package person
 
 import (
 	"fmt"
+
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/domains"
 	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
 )

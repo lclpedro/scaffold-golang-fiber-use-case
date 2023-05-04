@@ -30,22 +30,12 @@ func (v *customerView) CreateCustomerHandler(c *fiber.Ctx) error {
 		return err
 	}
 	input := customer.InputNewCustomer{
-		Person: struct {
-			FirstName string
-			LastName  string
-			Age       int
-		}{
+		Person: customer.InputPerson{
 			FirstName: customerBody.Person.FirstName,
 			LastName:  customerBody.Person.LastName,
 			Age:       customerBody.Person.Age,
 		},
-		Address: struct {
-			StreetName string
-			ZipCode    string
-			City       string
-			State      string
-			Country    string
-		}{
+		Address: customer.InputAddress{
 			StreetName: customerBody.Address.StreetName,
 			ZipCode:    customerBody.Address.ZipCode,
 			City:       customerBody.Address.City,

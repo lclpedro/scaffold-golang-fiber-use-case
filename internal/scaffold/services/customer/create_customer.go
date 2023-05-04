@@ -10,19 +10,22 @@ import (
 	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
 )
 
+type InputPerson struct {
+	FirstName string
+	LastName  string
+	Age       int
+}
+type InputAddress struct {
+	StreetName string
+	ZipCode    string
+	City       string
+	State      string
+	Country    string
+}
+
 type InputNewCustomer struct {
-	Person struct {
-		FirstName string
-		LastName  string
-		Age       int
-	}
-	Address struct {
-		StreetName string
-		ZipCode    string
-		City       string
-		State      string
-		Country    string
-	}
+	Person  InputPerson
+	Address InputAddress
 }
 
 func (i *InputNewCustomer) ToDomains() (*domains.Person, *domains.Address) {
@@ -71,7 +74,7 @@ func (s *customerService) CreateCustomer(ctx context.Context, input InputNewCust
 		if err != nil {
 			return err
 		}
-		fmt.Println(fmt.Sprintf("Creste PersonID: %d", personID))
+		fmt.Println(fmt.Sprintf("Create PersonID: %d", personID))
 		return nil
 	})
 }
