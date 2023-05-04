@@ -1,0 +1,17 @@
+### Create Customer
+POST localhost:8080/v1/customers
+
+{
+    "person":{
+        "first_name":"Pedro",
+        "last_name":"Lucas",
+        "age":26
+    },
+    "address":{
+        "street_name":"Rua XPTO",
+        "zip_code":"01234-567",
+        "city":"São Paulo",
+        "state":"SP",
+        "country":"Brasil"
+    }
+}
