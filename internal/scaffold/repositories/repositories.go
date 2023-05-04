@@ -7,7 +7,6 @@ import (
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/health"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/person"
 	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
 )
 
 type AllRepositories struct {
@@ -16,7 +15,7 @@ type AllRepositories struct {
 	Address          address.Repository
 }
 
-func RegistryRepositories(uow uow.UnitOfWorkInterface, dbConnection mysql.Connection) uow.UnitOfWorkInterface {
+func RegistryRepositories(uow mysql.UnitOfWorkInterface, dbConnection mysql.Connection) mysql.UnitOfWorkInterface {
 	uow.Register("HealthRepository", func(tx *sql.Tx) interface{} {
 		repo := health.NewHealthRepository(dbConnection)
 		return repo

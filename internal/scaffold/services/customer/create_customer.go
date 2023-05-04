@@ -7,7 +7,7 @@ import (
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/domains"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/address"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories/person"
-	uow "github.com/lclpedro/scaffold-golang-fiber/pkg/unit_of_work"
+	"github.com/lclpedro/scaffold-golang-fiber/pkg/mysql"
 )
 
 type InputPerson struct {
@@ -54,7 +54,7 @@ func (s *customerService) getPersonRepository(ctx context.Context) (person.Repos
 }
 
 func (s *customerService) CreateCustomer(ctx context.Context, input InputNewCustomer) error {
-	return s.uow.Do(ctx, func(uow *uow.UnitOfWork) error {
+	return s.uow.Do(ctx, func(uow *mysql.UnitOfWork) error {
 		addressRepo, err := s.getAddressRepository(ctx)
 		if err != nil {
 			return nil
