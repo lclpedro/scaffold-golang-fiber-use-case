@@ -1,7 +1,7 @@
 package views
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/services"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/views/customer"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/views/health"
