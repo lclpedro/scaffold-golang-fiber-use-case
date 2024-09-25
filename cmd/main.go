@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 	"github.com/lclpedro/scaffold-golang-fiber/configs"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/repositories"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/services"

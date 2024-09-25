@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/services/customer"
 )
 
@@ -23,10 +23,11 @@ type NewCustomerRequest struct {
 	} `json:"address"`
 }
 
-func (v *customerView) CreateCustomerHandler(c *fiber.Ctx) error {
+func (v *customerView) CreateCustomerHandler(c fiber.Ctx) error {
 	ctx := context.Background()
 	customerBody := new(NewCustomerRequest)
-	if err := c.BodyParser(customerBody); err != nil {
+
+	if err := c.Bind().JSON(customerBody); err != nil {
 		return err
 	}
 	input := customer.InputNewCustomer{

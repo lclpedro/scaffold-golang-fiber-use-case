@@ -1,13 +1,13 @@
 package health
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 	"github.com/lclpedro/scaffold-golang-fiber/internal/scaffold/services/health"
 	"net/http"
 )
 
 type View interface {
-	HealthHandler(c *fiber.Ctx) error
+	HealthHandler(c fiber.Ctx) error
 }
 
 type healthView struct {
@@ -20,7 +20,7 @@ func NewHealthView(healthService health.Service) View {
 	}
 }
 
-func (v healthView) HealthHandler(c *fiber.Ctx) error {
+func (v healthView) HealthHandler(c fiber.Ctx) error {
 	err := v.healthService.Ping(c.Context())
 	if err != nil {
 		c.Status(http.StatusBadRequest)
