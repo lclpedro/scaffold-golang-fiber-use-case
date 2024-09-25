@@ -32,7 +32,7 @@ const (
 	ErrorExecCommit   = "UnitOfWork: Error in execute commit transaction. Original Error: %s Commit Error: %s"
 )
 
-func NewUnitOfWork(db Connection) *UnitOfWork {
+func NewUnitOfWork(db Connection) UnitOfWorkInterface {
 	return &UnitOfWork{
 		DbConnection: db.GetDB(),
 		DbFactory:    db,
